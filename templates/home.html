@@ -1,0 +1,73 @@
+<ion-view title="{{cStoreName}}" hide-back-button="true">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <a href="#/app/cart">
+            <button class="button button-icon1 button-icon icon ion-ios-cart" style="color: #FFFFFF;"></button>
+        </a>
+        <!--<a href="#/app/cart"> <img class="cart-image-header" src="img/cart.png"/>
+           <p class="cart-badge-top">{{cartcount}}</p></a> -->
+
+
+    </ion-nav-buttons>
+
+
+    <style>
+        .catagory_img {
+            width: 40% !important;
+        }
+        .button,
+        .topcoat-button-bar__button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            background-clip: padding-box;
+            color: inherit;
+            vertical-align: top;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font: inherit;
+            cursor: default;
+            user-select: none;
+        }
+
+    </style>
+
+    <ion-content style="background-color:#f2f2f2">
+
+
+        <div class="list card" ng-repeat="category in categorylist">
+            <div style="border-bottom: 1px solid rgb(201, 201, 201);z-index: 999;" class="item item-image">
+                <img class="catagory_img" src="{{imagepath}}{{category.strCategoryImage}}">
+            </div>
+
+            <div class="row">
+                <div class="col-50">
+                    <p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 12px; padding-left: 10px;"
+                       class="">
+                        {{category.strCategoryName}}
+                    </p>
+                </div>
+
+                <div class="col">
+                    <a ng-click="gotonext({{category.intCategoryId}},'{{category.strCategoryName}}')"
+                       href="#/app/categorylists/{{category.intCategoryId}}/{{category.strCategoryName}}"
+                       style="min-height: 25px;line-height: 25px;border-color: #55acee;border-radius:14px;padding: 0px 7px;font-size: 12px;background-color: #55acee;color: #fff;float: right;"
+                       class="button icon-right ion-chevron-right button-calm viewmore">View More</a>
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

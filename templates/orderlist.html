@@ -1,0 +1,88 @@
+<ion-view title="Order List" >
+
+  <ion-nav-buttons side="left">
+    
+	
+ </ion-nav-buttons>
+  
+  <ion-nav-buttons side="right">   
+  <!--<button class="button button-icon1 button-icon icon ion-ios-cart" style="color: #FFFFFF;"></button>-->
+
+	
+  </ion-nav-buttons>
+
+  
+  <style>
+.catagory_img{
+	width: 40% !important;
+}
+.button2 {
+    border-color: #fff;
+	background-color: #55acee;
+	color: #FFF;
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	padding: 0 12px;
+	min-width: 52px;
+	min-height: 25px;
+	border-right: 1px solid white;
+	border-style: solid;
+	border-radius: 2px;
+	vertical-align: top;
+	text-align: center;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 25px;
+	cursor: pointer;
+}
+.button-bar > .button2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+	font-size: 14px;
+    flex: 1;
+    display: block;
+    overflow: hidden;
+    padding: 0 16px;
+    width: 0;
+    border-radius: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+  </style>
+  
+<ion-content  style="background-color:#f2f2f2">
+<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+
+<div class="card" ng-repeat="order in orderlist" ng-if="orderlist[0].Success!=0">
+<!--<h4 style="border-bottom: 1px solid grey; padding: 0px 7px 7px; color: grey;">Logitech Mouse</h4>-->
+	<div class="list" >
+		<a  class="item item-thumbnail-left">
+			<p style="text-align: left;">Order Id :<span style="color:#55acee;">#{{order.nOrderId}}</span></p>
+			<p style="text-align: left;">Order Date :<span style="color:#55acee;">{{order.dtGeneratedDate | date:'mediumDate'}}</span></p>
+			<p style="text-align: left;">Quantity :<span style="color:#55acee;">{{order.cQuantity}}</span></p>
+			<p style="text-align: left;">Amout Paid :<span style="color:#55acee;">{{cCurrency}}{{order.fTotalPrice}}</span></p>
+			<p style="text-align: left;">Status :<span style="color:#55acee;">{{order.cCurrentStatus}}</span></p>
+		</a>
+	</div>
+
+
+	<div style="display: inline-flex;margin-top: 10px;margin:0px;padding-left:0px;"class="button-bar">
+		<a style="text-decoration:none;" ng-click='gotonext({{order.nOrderId}});' href="#/app/orderdetail/{{order.nOrderId}}" class="button2">Details</a>
+	</div>
+	
+</div>
+
+<div class="" ng-if="orderlist[0].Success==0" style="text-align:center;width: 100%;">
+	<h2>{{orderlist[0].Message}}</h2>
+</div>
+<div style="height:50px"></div>
+
+    </ion-content>
+    
+</ion-view>
+

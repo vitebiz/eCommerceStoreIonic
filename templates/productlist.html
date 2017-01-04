@@ -1,0 +1,297 @@
+<ion-view title="{{strCategoryName}}">
+
+  
+  <ion-nav-buttons side="right">      
+	<a href="" ng-click="filter.show()"><img style="height: 15px; margin-top: 10px; margin-right: 5px;" src="img/filter.png"/></a>	
+  </ion-nav-buttons>
+  
+<style>
+.catagory_img{
+	width: 40% !important;
+}
+
+.border-list{
+	background-color: #fff;
+	padding: 10px;
+	margin-top: 5px;
+}
+.border-list img{
+	width:100%;
+	height: 190px;
+}
+a{
+	text-decoration:none;
+	color:#000;
+}
+.wishlist {
+    width: 20px !important;
+    height: 20px !important;  
+}
+p {
+    margin: 0;
+}
+.search_btn{
+	width: 100%;
+	background-color: #EA4C88;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+.brand select{
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	width: 100%;
+	border: medium none;
+	background-color: rgb(224, 224, 224);
+	background-image: url("img/arrow.png");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 16px auto;
+	height: 40px;
+	border-radius: 2px;
+	color: #656565;
+	font-size: 15px;
+}
+.color img{
+	width: 12px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+ input[id*="cor"] {
+  display: none;
+} 
+input[id*="cor"]:checked + label:before {
+  content: '\f00c';
+  display: block;
+  position: absolute;
+  font-family: 'fontawesome';
+  top: 1px;
+  left: 4px;
+  font-size: 12px;
+  color: #000;
+}
+
+label[class*="cor"] {
+  display: inline-block;
+  height: 22px;
+  width: 23px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  margin-right: 5px;
+}
+
+
+.value {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin: 0 0 0 -20px;
+  width: 40px;
+  text-align: center;
+  display: block;
+  
+  /* optional */
+  
+  font-weight: normal;
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.price-range-both.value {
+  width: 100px;
+  margin: 0 0 0 -50px;
+  top: 26px;
+}
+
+.price-range-both {
+  display: none; 
+}
+
+.value i {
+  font-style: normal;
+}
+
+.price img{
+	width: 10px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+.size img{
+	width:12px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+.buy-btn{
+	width: 100%;
+	background-color: #55ACEE;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+.search_btns{
+	width: 63%;
+	padding: 0px;
+	background-color: #55acee;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	height: 34px;
+}
+</style>
+  
+<ion-content  style="background-color:#f1f5f7;">
+<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+
+<div class="row">
+				<div class="col-80">
+				<label style="height:35px;border: 1px solid rgb(188, 188, 188); padding:5px; border-radius: 4px;width:100%;" class="item item-input">
+				<i  class="icon ion-search placeholder-icon"></i>
+			<input style="width:100%;" ng-model="search.keyword"  type="text" placeholder="Search"  class="icon ion-search placeholder-icon" >
+			  </label>
+</div>
+		
+<div class="col-33">
+		<button class="search_btns" ng-click="search()">Search</button>
+		<!--<i style="padding-bottom: 5px;" class="icon ion-search placeholder-icon" ng-click="search()"></i>-->
+		</div>
+</div>
+
+
+<div class="" >
+	<div class="" style="width: 50%;display: inline-block;padding-left: 5px;padding-right: 5px;padding:5px;" ng-repeat="product in productlist" ng-if="productlist[0].Success!=0">
+		<div style="margin: 0px 0px !important;" class="list card" >
+
+			<div style="border-bottom: 1px solid rgb(201, 201, 201);z-index: 999;" class="item item-image">
+				<a href="#/productdetail/{{product.nProductId}}/{{product.cName}}"><img class="catagory_img" src="{{imagepath}}{{product.cImage}}"></a>
+			</div>
+			
+			<div style="min-height: 55px;" class="row">
+				<div class="col-66">
+					<p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 11px;" class="">
+						{{product.cName | limitTo:50}}
+					</p>
+				</div>
+				<div class="col col-33">
+					<p style="text-align:right;font-weight: bold; color: rgb(95, 95, 95); font-size: 11px;" class="price" ng-if="todaydate <= product.dtSpecialPriceTo && todaydate >= product.dtSpecialPriceFrom"><Strike>{{product.Currency}} {{product.fPrice}}</strike> {{product.Currency}} {{product.nSpecialPrice}}</p>
+					<p class="price" style="text-align:right;font-weight: bold; color: rgb(95, 95, 95); font-size: 12px;" ng-if="todaydate >= product.dtSpecialPriceTo || todaydate <= product.dtSpecialPriceFromss">{{product.Currency}} {{product.fPrice}}</p>
+				</div> 
+			</div>
+			<a href="#/productdetail/{{product.nProductId}}/{{product.cName}}" style="min-height: 25px;line-height: 25px;border-color: #55acee;width:100%;padding: 0px 7px;font-size: 12px;background-color: #55acee;color: #fff;border-radius: 0px;" class="button icon-right ion-chevron-right button-calm viewmore">Buy now</a>
+		</div>
+	</div>	
+</div>
+
+<div class="" ng-if="productlist[0].Success==0" style="text-align:center;width: 100%;">
+<p style="width:100%;margin-top:30px;"><!-- <img src="img/dropbox-logo.png"></p> -->
+	<h2>{{productlist[0].Message}}</h2>
+</div>
+<div style="height:45px;" class=""></div>
+
+</ion-content>
+
+<!-- Model of filter start -->
+<script id="templates/filter.html" type="text/ng-template" >
+  <ion-modal-view style="right: 0%;width: 90%;">
+    <ion-header-bar style="background: #55ACEE;border-bottom: #55ACEE;color:#fff">
+      <h1 class="title" style="color:#fff">Filter</h1>
+		<button class="button button-clear button-primary" ng-click="filter.hide()" style="color:#fff">Cancel</button>
+    </ion-header-bar>
+  <ion-content>
+   
+  <div class="color">
+		<div class="row">
+			<div class="col">
+				<img src="img/color.png"><span>Color</span></img>
+				<div style="margin: 10px 0px 0px;" class="panel panel-default">
+				  <div class="panel-body">
+					<form role="form">
+					  <div class="form-group">
+					  
+						<div style="float: left;" ng-repeat="color in filterlist.Color[0]">
+						  <input type="checkbox" ng-model="applyfilter.color[color.cValue]" name="color" id="cor{{color.cValue}}" value="{{color.cValue}}" />
+						  <label for="cor{{color.cValue}}" class="cor1" style="background-color: {{color.cValue}};"></label>
+						</div> 
+					  </div>
+					</form>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="price">
+		<div class="row">
+			<div class="col">
+				<span>Price</span></img>
+				<div slider id="slider-distance">
+	  <div>
+		<div inverse-left style="width:0%;"></div>
+		<div inverse-right style="width:100%;"></div>
+		<div range style="left:0%;right:100%;"></div>
+		<span thumb style="left:0%;"></span>
+		<span thumb style="left:100%;"></span>
+		
+		<div class="value1" sign>
+		  {{cCurrency}}<span id="value" class="minvaluespan" > {{filterlist.MinPrice}}</span>
+		</div>
+		<div class="value2" sign>
+		  {{cCurrency}}<span id="value" class="maxvaluespan"> {{filterlist.MaxPrice}}</span>
+		</div>
+	  </div>
+	  <input type="range" tabindex="0"  value="{{filterlist.MinPrice}}" max="{{filterlist.MaxPrice}}" min="{{filterlist.MinPrice}}" step="1" oninput="
+	  this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
+	  var value= (100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+	  var children = this.parentNode.childNodes[1].childNodes;
+	  children[1].style.width=value+'%';
+	  children[5].style.left=value+'%';
+	  children[7].style.left=value+'%';children[11].style.left=value+'%';
+	  children[11].childNodes[1].innerHTML=(this.value); " />
+
+	  <input type="range" tabindex="0"  value="{{filterlist.MaxPrice}}" max="{{filterlist.MaxPrice}}" min="{{filterlist.MinPrice}}" step="1" oninput="
+	  this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
+	  var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+	  var children = this.parentNode.childNodes[1].childNodes;
+	  children[3].style.width=(100-value)+'%';
+	  children[5].style.right=(100-value)+'%';
+	  children[9].style.left=value+'%';children[13].style.right=value+'%';
+	  children[13].childNodes[1].innerHTML=(this.value);" />
+	</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div style="position: relative;top: 55px;" class="size">
+		<div class="row">
+			<div class="col">
+				<img src="img/size.png" ><span>Size</span></img>
+				<ul class="sizeSelect">
+				  <li class="sizeSelect-item" ng-repeat="size in filterlist.Size[0]">
+					<input  type="checkbox" ng-model="applyfilter.size[size.cValue]" name="size" id="{{size.cValue}}" />
+					<label  for="{{size.cValue}}">{{size.cValue}}</label>
+				  </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div style="height:50px"> </div>
+    </ion-content>
+	 <div class="tabs ">
+	 <div class="tab-item">
+		<button class="buy-btn" ng-click="applyfilter()">Apply</button>
+	</div> 
+</div>
+  </ion-modal-view>
+</script>
+<!-- Model of filter end -->
+
+	
+</ion-view>

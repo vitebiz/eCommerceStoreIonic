@@ -1,0 +1,89 @@
+<ion-view title="Invoice" drag-content="false">
+  <ion-nav-buttons side="left">
+  
+  </ion-nav-buttons>
+  <!--<ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-navicon" ng-click="showFilterBar()">
+    </button>
+  </ion-nav-buttons>-->
+
+  <style>
+
+  </style>
+    <ion-content style="background-color:#fff">
+	<div>
+		<div class="row invoice-bg" >
+			<div class="col order-p">
+			<p>Order No:#{{orderdetail.nOrderId}}</p>
+			<p>{{orderdetail.cCustomerName}}</p>
+			</div>
+			<div class="col sent-link">
+			<p style="text-align: right;"><button class="pending">{{orderdetail.cCurrentStatus}}</button></p>
+			</div>
+		</div>
+		<div class="row invoice-bg">
+			<div class="col">
+				<img style="width: 20px; position: relative; top: 5px; margin-right: 5px;" src="img/location.png"><span>{{orderdetail.cAddress}}</span></img>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col invoice-date">
+				<p>{{orderdetail.dtGeneratedDate | date:'mediumDate'}}</p>
+				<p style="font-size: 12px;color: #55ACEE">Order Date</p>
+			</div>
+			<div class="col">
+			<p style="margin:0px;padding-top: 10px;color:#000;text-align: right;">Quantity<span style="color: #55ACEE; padding-left:5px;">{{orderdetail.cQuantity}}</span></p>
+			</div>
+		</div>
+		<div class="row invoice-item">
+			<div class="col col-60">
+				<p style="margin:0px;color:#55ACEE;">Items</p>
+			</div>
+			<div class="col col-20">
+				<p style="margin:0px;color:#55ACEE;">Qty</p>
+			</div>
+			<div class="col col-20">
+				<p style="margin:0px;color:#55ACEE;text-align:right;">Amount</p>
+			</div>
+		</div>
+	<div class="order-list" ng-repeat="item in orderdetail.Item[0]">	
+		<div class="row">
+			<div class="col col-60">
+				<p style="margin:0px;padding-top: 10px;color:#55ACEE;">{{item.cProductName}}</p>
+			</div>
+			<div class="col col-20">
+				<p style="padding-top: 10px;margin:0px;color:#000;font-weight:bold;">{{item.fQuantity}}</p>
+			</div>
+			<div class="col col-20">
+				<p ng-if="orderdetail.dtGeneratedDate <= item.dtSpecialPriceTo && orderdetail.dtGeneratedDate >= item.dtSpecialPriceFrom" style="padding-top: 10px;margin:0px;color:#000;font-weight:bold;text-align:right;">{{cCurrency}}{{item.nSpecialPrice*item.fQuantity}}</p>
+				
+				<p ng-if="orderdetail.dtGeneratedDate >= item.dtSpecialPriceTo || orderdetail.dtGeneratedDate <= item.dtSpecialPriceFromss" style="padding-top: 10px;margin:0px;color:#000;font-weight:bold;text-align:right;">{{cCurrency}}{{item.fProductPrice*item.fQuantity}}</p>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<img style="width: 65px; height: 65px;" src="{{imagepath}}{{item.cProductImage}}"/>
+			</div>
+		</div>
+	</div>
+	
+	
+		<div class="row">
+			<div class="col col-80">
+			<p style="text-align: right;"><span style="color: #55ACEE;">Subtotal</span></p>
+				<p style="text-align: right;"><span style="color:#55ACEE;">Discount</span></p>
+				<!-- <p style="text-align: right;"><span style="padding-right:7px;color: #EA4C88;">Tax</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{cCurrency}} 0</p> -->
+				<p style="text-align: right;"><span style="color:#55ACEE;">Grand Total</span></p>
+			</div>
+			<div class="col col-20">
+				<p style="text-align: right;">{{cCurrency}} {{orderdetail.fTotalPrice+orderdetail.cDiscountAmount}}</p>
+				<p style="text-align: right;">{{cCurrency}} {{orderdetail.cDiscountAmount}}</p>
+				<!-- <p style="text-align: right;"><span style="padding-right:7px;color: #EA4C88;">Tax</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{cCurrency}} 0</p> -->
+				<p style="text-align: right;">{{cCurrency}} {{orderdetail.fTotalPrice}}</p>
+			</div>
+		</div>
+</div>
+<div style="height:45px;"></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,100 @@
+<ion-view title="Login" hide-back-button="true">
+  
+  <style>
+  .scroll-content1 {
+    background: url(img/login.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .item .item-content.activated{
+	background-color: #5E87B0;
+	color: #FFF;
+	} 
+	.form{
+  float:left;
+  height:86%;
+  width:100%;
+  box-sizing:border-box;
+  padding: 20px;
+}
+
+input::-webkit-input-placeholder {
+color:white !important;
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: white !important; 
+font-size:18px; 
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color:white !important;  
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input:-ms-input-placeholder {  
+color:white !important;  
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+
+
+
+a{
+text-decoration: inherit;
+}
+
+  </style>
+  <ion-content class="scroll-content1">
+	<div style="height:10px;" class=""></div>
+    <div class="" style="width:100%;margin: 0 auto;text-align: center;">
+		  
+				<center><img style="width:210px;" src="{{imagepath}}{{cLogo}}"/></center>
+				<!--<center><img style="width:210px;" src="{{imgpath}}{{Logo}}" /></center>-->
+	</div>
+	</div>
+	
+	<div style="width: 90%;margin: 0 auto;" class="login-form">
+
+		<div style="border-bottom: 1px solid #FFF;" class="login-form">
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-person"></i>
+			<input type="text" ng-model="login.cUserName" style="padding-left: 5px;color: #FFF;" placeholder="Username or Email"  >
+		  </label></br>
+		 
+		  
+		  <label style="background-color: rgba(255, 255, 255, 0);" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-locked"></i>
+			<input type="password" ng-model="login.cPassword" style="padding-left: 5px;color: #FFF;" placeholder="Password">
+		  </label>
+		  
+		</div>
+		
+	
+		
+	</div>
+
+<div style="text-align: center;margin-top: 20px;">
+<button ng-click="loginUser()" style="font-size:17px;font-weight: bold;width:90%;background-color:#23cdde;border-color: #23cdde;color: #fff;" class="button button-positive">
+  Sign In
+</button>
+
+<a href="#/register"><button style="font-size:17px;font-weight: bold;width:90%; margin-top: 20px;background-color:#23cdde;border-color: #23cdde;color: #fff;" class="button button-positive">
+ Sign Up
+</button></a>
+
+<!--<button style="font-size: 20px;font-weight: bold; margin-top: 20px;width:90%;background-color:#4574de;border-color: #4574de;color: #fff;" class="button button-positive">
+ Sign in using Facebook
+</button></a>-->
+</div>
+<a href="#/ForgotPassword"><p style="color:white;text-align:center;padding-top: 40px;">Forgot your Password?</p></a>
+
+
+  </ion-content>
+</ion-view>

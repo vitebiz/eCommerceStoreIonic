@@ -1,0 +1,343 @@
+<ion-view title="Search" >
+<ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+      </ion-nav-buttons>
+ 
+  <style>
+
+.search_btn{
+	width: 100%;
+	background-color: #55ACEE;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+.brand select{
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	width: 100%;
+	border: medium none;
+	background-color: rgb(224, 224, 224);
+	background-image: url("img/arrow.png");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 16px auto;
+	height: 40px;
+	border-radius: 2px;
+	color: #656565;
+	font-size: 15px;
+}
+.color img{
+	width: 12px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+input[id*="cor"] {
+  display: none;
+}
+input[id*="cor"]:checked + label:before {
+  content: '\f00c';
+  display: block;
+  position: absolute;
+  font-family: 'fontawesome';
+  top: 1px;
+  left: 4px;
+  font-size: 12px;
+  color: #000;
+}
+
+label[class*="cor"] {
+  display: inline-block;
+  height: 22px;
+  width: 23px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  margin-right: 5px;
+}
+label[class*="cor"]:hover {
+  border-color: #000;
+}
+
+.cor1 {
+  background-color: #4986E7;
+  border-color: #4986E7;
+}
+
+.cor2 {
+  background-color: #5484ED;
+  border-color: #5484ED;
+}
+
+.cor3 {
+  background-color: #A4BDFC;
+  border-color: #A4BDFC;
+}
+
+.cor4 {
+  background-color: #46D6DB;
+  border-color: #46D6DB;
+}
+
+.cor5 {
+  background-color: #7AE7BF;
+  border-color: #7AE7BF;
+}
+
+.cor6 {
+  background-color: #51B749;
+  border-color: #51B749;
+}
+
+.cor7 {
+  background-color: #FBD75B;
+  border-color: #FBD75B;
+}
+
+.cor8 {
+  background-color: #FFB878;
+  border-color: #FFB878;
+}
+
+.cor9 {
+  background-color: #FF887C;
+  border-color: #FF887C;
+}
+
+.cor10 {
+  background-color: #DC2127;
+  border-color: #DC2127;
+}
+
+.cor11 {
+  background-color: #DBADFF;
+  border-color: #DBADFF;
+}
+
+.cor12 {
+  background-color: #E1E1E1;
+  border-color: #E1E1E1;
+}
+
+
+.value {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin: 0 0 0 -20px;
+  width: 40px;
+  text-align: center;
+  display: block;
+  
+  /* optional */
+  
+  font-weight: normal;
+  font-family: Verdana,Arial,sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.price-range-both.value {
+  width: 100px;
+  margin: 0 0 0 -50px;
+  top: 26px;
+}
+
+.price-range-both {
+  display: none; 
+}
+
+.value i {
+  font-style: normal;
+}
+
+
+.price img{
+	width: 10px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+.size img{
+	width:12px;
+	margin-right: 10px;
+	position: relative;
+	top: 2px;
+}
+.buy-btn{
+	width: 100%;
+	background-color: #55ACEE;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+  </style>
+  
+    <ion-content  style="background-color: #fff;">
+<div>
+  <label style="border: 1px solid rgb(188, 188, 188); margin: 5px; height: 35px; border-radius: 4px;" class="item item-input">
+    <i style="padding-bottom: 5px;" class="icon ion-search placeholder-icon"></i>
+    <input style="padding-bottom:10px;" ng-model="search.keyword"  type="text" placeholder="Search">
+  </label>
+</div>
+<!-- <div class="brand">
+	<div class="row">
+		<div class="col">
+			<select>
+				<option>Brand</option>
+				<option>Puma</option>
+				<option>Nike</option>
+			</select>
+		</div>
+	</div>
+</div>	
+<div class="color">
+	<div class="row">
+		<div class="col">
+			<img src="img/color.png"><span>Color</span></img>
+			<div style="width: 80%; margin: 10px 0px 0px;" class="panel panel-default">
+			  <div class="panel-body">
+				<form role="form">
+				  <div class="form-group">
+					<div>
+					  <input type="checkbox" name="cor" id="cor1" value="#4986E7" />
+					  <label for="cor1" class="cor1"></label>
+					  <input type="checkbox" name="cor" id="cor2" value="#5484ED" />
+					  <label for="cor2" class="cor2"></label>
+					  <input type="checkbox" name="cor" id="cor3" value="#A4BDFC" />
+					  <label for="cor3" class="cor3"></label>
+					  <input type="checkbox" name="cor" id="cor4" value="#46D6DB" />
+					  <label for="cor4" class="cor4"></label>
+					  <input type="checkbox" name="cor" id="cor5" value="#7AE7BF" />
+					  <label for="cor5" class="cor5"></label>
+					  <input type="checkbox" name="cor" id="cor6" value="#51B749" />
+					  <label for="cor6" class="cor6"></label>
+					  <input type="checkbox" name="cor" id="cor7" value="#FBD75B" />
+					  <label for="cor7" class="cor7"></label>
+					  <input type="checkbox" name="cor" id="cor8" value="#FFB878" />
+					  <label for="cor8" class="cor8"></label>
+					  <input type="checkbox" name="cor" id="cor9" value="#FF887C" />
+					  <label for="cor9" class="cor9"></label>
+					  <input type="checkbox" name="cor" id="cor10" value="#DC2127" />
+					  <label for="cor10" class="cor10"></label>
+					  <input type="checkbox" name="cor" id="cor11" value="#DBADFF" />
+					  <label for="cor11" class="cor11"></label>
+					  <input type="checkbox" name="cor" id="cor12" value="#E1E1E1" />
+					  <label for="cor12" class="cor12"></label>
+					</div>
+				  </div>
+				</form>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>	
+<div class="price">
+	<div class="row">
+		<div class="col">
+			<img src="img/price.png"><span>Price</span></img>
+			<div slider id="slider-distance">
+  <div>
+    <div inverse-left style="width:70%;"></div>
+    <div inverse-right style="width:70%;"></div>
+    <div range style="left:30%;right:40%;"></div>
+    <span thumb style="left:30%;"></span>
+    <span thumb style="left:60%;"></span>
+    
+	<div class="value1" sign>
+      <span id="value">AED 30</span>
+    </div>
+    <div class="value2" sign>
+      <span id="value">AED 60</span>
+    </div>
+  </div>
+  <input type="range" tabindex="0" value="30" max="100" min="0" step="1" oninput="
+  this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
+  var value= (100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+  var children = this.parentNode.childNodes[1].childNodes;
+  children[1].style.width=value+'%';
+  children[5].style.left=value+'%';
+  children[7].style.left=value+'%';children[11].style.left=value+'%';
+  children[11].childNodes[1].innerHTML='AED ' +(this.value); " />
+
+  <input type="range" tabindex="0" value="60" max="100" min="0" step="1" oninput="
+  this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
+  var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
+  var children = this.parentNode.childNodes[1].childNodes;
+  children[3].style.width=(100-value)+'%';
+  children[5].style.right=(100-value)+'%';
+  children[9].style.left=value+'%';children[13].style.right=value+'%';
+  children[13].childNodes[1].innerHTML='AED ' +(this.value);" />
+</div>
+		</div>
+	</div>
+</div>	
+
+<div style="position: relative;top: 55px;" class="size">
+	<div class="row">
+		<div class="col">
+			<img src="img/size.png"><span>Size</span></img>
+			
+				<ul class="sizeSelect">
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="xxs" />
+					<label for="xxs">XXS</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="xs" />
+					<label for="xs">XS</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="s" />
+					<label for="s">S</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="m" />
+					<label for="m">M</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="l" />
+					<label for="l">L</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="xl" />
+					<label for="xl">XL</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="xxl" />
+					<label for="xxl">XXL</label>
+				  </li>
+				  <li class="sizeSelect-item">
+					<input type="checkbox" name="size" id="3xl" />
+					<label for="3xl">3XL</label>
+				  </li>
+				</ul>
+		</div>
+	</div>
+</div>	
+<div style="position: relative;top: 55px;" class="brand">
+	<div class="row">
+		<div class="col">
+			<select>
+				<option>Occasion</option>
+				<option>Party</option>
+				<option>Wedding</option>
+			</select>
+		</div>
+	</div>
+</div> -->
+
+
+
+<div style="height:50px"></div>
+</ion-content>
+ <div class="tabs ">
+	 <div class="tab-item">
+		<button class="buy-btn" ng-click="search()">Search</button>
+	</div> 
+</div>
+</ion-view>

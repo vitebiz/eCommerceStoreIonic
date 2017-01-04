@@ -1,0 +1,90 @@
+<ion-view title="Offer" >
+<ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+      </ion-nav-buttons>
+  <style>
+
+  </style>
+
+   <ion-content  style="background-color:#fff">
+	<a href="" ng-click="viewofferdetail('{{offer.nOfferId}}')" ng-repeat="offer in offerlist" ng-if="offerlist[0].Success!=0" style="text-decoration:none;color:black">
+	<div class="row" style="padding: 0;">
+		<div class="col" style="padding: 0;">
+			<img ng-if="offer.cRemark2!=''" src="{{imagepath}}{{offer.cRemark2}}" style="width:100%;height:180px">
+		</div>
+	
+	</div>
+	<div class="row" >
+		<div class="col">
+			<img style="width: 20px; position: relative; top: 5px;" src="img/lable.png"><span style="padding-left: 5px; font-size: 13px; font-weight: bold;">{{offer.cOfferName}}</span></img>
+		</div>
+		
+	</div>
+	</a>
+	
+	<div ng-if="offerlist[0].Success==0">
+		<h2 style="text-align: center;margin-top: 20px;">{{offerlist[0].Message}}</h2>
+	</div>
+<div style="height:60px;" class=""></div> 
+    </ion-content>
+ <!-- Model of edit profile start -->
+  <script id="templates/offerdetail.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar style="background: #55ACEE;border-bottom: #55ACEE;color:#fff">
+      <h1 class="title" style="color:#fff">Detail</h1>
+	  <button class="button button-clear button-primary" ng-click="offerdetail.hide()" style="color:#fff">close</button>
+    </ion-header-bar>
+    <ion-content>
+
+	<div class="row">
+		<div class="col" >
+			<img ng-if="data.cRemark2!=''" src="{{imagepath}}{{offer.cRemark2}}" style="width:100%;height:180px">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col" style="border-bottom: 1px solid rgb(216, 216, 216);">
+			OfferName: {{data.cOfferName}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col" style="border-bottom: 1px solid rgb(216, 216, 216);">
+			CouponCode: {{data.cCouponCode}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+			  <div style="" class="col label-font">
+			  
+				<p style="font-size: 11px; color: rgb(135, 135, 135);">Valid From</p>
+			
+				{{data.dtValidFrom | date:'mediumDate'}}
+			  </div>
+			</div>
+		</div>
+		<div class="col">
+			<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+			  <div style="" class="col label-font">
+			  
+				<p style="font-size: 11px; color: rgb(135, 135, 135);">Valit To</p>
+			
+				{{data.dtValitTo | date:'mediumDate'}}
+			  </div>
+			</div>
+		</div>
+	</div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!-- Model of edit profile end -->
+</ion-view>
+
+
+
+
+
+
+
+
+
+

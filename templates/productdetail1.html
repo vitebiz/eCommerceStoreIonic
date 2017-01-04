@@ -1,0 +1,329 @@
+<ion-view title="{{cName}}">
+
+	<ion-nav-buttons side="left">
+		<button class="button back-button buttons button-clear header-item" style="color: #FFFFFF;" ng-click="$ionicGoBack()"><i class="icon ion-ios-arrow-back"></i></button>
+	</ion-nav-buttons>
+  
+  <ion-nav-buttons side="right">   
+    <a href="#/app/cart"> <img class="cart-image-header" src="img/tab3.png"/>
+	<p class="cart-badge-top">{{cartcount}}</p></a> 
+  </ion-nav-buttons>
+
+
+ 
+  <style>
+ 
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.full {
+  width: 100%;
+}
+
+.title {
+  letter-spacing: -.065em;
+}
+
+.spacer {
+  padding: 25px 0;
+}
+
+.topcoat-button-bar__item > input {
+  border: 0;
+	clip: rect(0 0 0 0);
+	height: 2rem;
+	margin: 0 -2rem -2rem 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: auto;
+  opacity: 0.001;
+  
+  
+}
+
+.button-bar,
+.topcoat-button-bar {
+	display: table;
+	table-layout: fixed;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	padding-left: 20px;
+
+  
+}
+
+.topcoat-button-bar__item {
+  display: table-cell;
+  width: auto;
+  border-radius: 0;
+}
+
+.topcoat-button-bar > .topcoat-button-bar__item:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.topcoat-button-bar > .topcoat-button-bar__item:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.topcoat-button-bar__item:first-child > .topcoat-button-bar__button {
+  border-right: none;
+}
+
+.topcoat-button-bar__item:last-child > .topcoat-button-bar__button {
+  border-left: none;
+}
+
+.button,
+.topcoat-button-bar__button {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  background-clip: padding-box;
+  color: inherit;
+  vertical-align: top;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: inherit;
+  cursor: default;
+  user-select: none;
+}
+
+.topcoat-button-bar__button {
+  padding: 0 1.25rem;
+  border: 1px solid #a5a8a8;
+  /* Important inheritance to manipulate border radius from parent */
+  background-color: #DAD9D8;
+  -webkit-box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px #fff;
+  text-shadow: 0 1px #fff;
+  line-height: 3rem;
+}
+
+:checked + .topcoat-button-bar__button,
+.topcoat-button-bar__button:active,
+.topcoat-button-bar__button.is-active {
+
+  -webkit-box-shadow: inset 0 1px rgba(0,0,0,0.12);
+box-shadow: 0px 6px 2px rgba(0, 0, 0, 0.36) inset;
+}
+
+.topcoat-button-bar__item:disabled,
+.topcoat-button-bar__item.is-disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.topcoat-button-bar__button:focus {
+  border: 1px solid #0940fd;
+  -webkit-box-shadow: 0 0 0 2px #6fb5f1;
+  box-shadow: 0 0 0 2px #6fb5f1;
+  z-index: 1;
+}
+
+ul {
+  list-style-type: none;
+  display:inline;
+  margin-left: 15px;
+}
+
+li.size, li.disabled {
+	display: inline-block;
+	min-width: 35px;
+	padding: 5px;
+	margin: 0 6px;
+	text-align: center;
+	height: 35px;
+}
+
+li.size {
+	cursor: pointer;
+	border: 1px solid #55acee;
+	color: rgb(0, 0, 0);
+	border-radius: 100%;
+	margin-top: 10px;
+
+}
+li.disabled {
+  background-color:rgb(255, 255, 255);
+  border:1px solid #ff3f3f;
+  color:rgb(255, 63, 63);
+}
+
+@keyframes flash {
+  0% {background-color:rgba(106, 183, 255, 0.4)}
+  100% {background-color:rgba(106, 183, 255, 1)}
+}
+
+@-webkit-keyframes flash {
+  0% {background-color:rgba(106, 183, 255, 0.4)}
+  100% {background-color:rgba(106, 183, 255, 1)}
+}	
+		
+li.active {
+  background-color:rgba(106, 183, 255, 1);
+  border:2px solid #333333;
+  margin-top:-1px;
+  font-weight:bold;
+  animation: flash ease-in 0.3s;
+  -webkit-animation: flash ease-in 0.3s;
+}
+
+.border{
+	text-align:center;
+	border:2px solid rgb(203, 203, 203);
+}
+p{
+	margin:0px;
+}
+.btn{
+	position: absolute;
+	bottom: 0px;
+	width:100%;
+}
+.buy-btn{
+	width: 100%;
+	background-color: #55ACEE;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+.btn-close{
+	color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0);
+	border: 1px solid rgb(255, 255, 255);
+	margin: 8px;
+	line-height: 30px;
+	min-height: 30px;
+}
+.zoom-view{
+	width: 100%;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+input[id*="color"],input[id*="size"] {
+  display: none;
+}
+input[id*="color"]:checked + label:before , input[id*="size"]:checked + label:before{
+  content: '';
+	position: absolute;
+	color: #55ACEE;
+	border: 2px solid;
+	height: 100%;
+	width: 100%;
+	paddi-left:15px;
+}
+label[class*="color"]  {
+  display: inline-block;
+  border: 2px solid transparent;
+  position: relative;
+  margin-left:22px;
+}
+label[class*="size"]{
+	display: inline-block;
+	position: relative;
+	border: 2px solid 	ghostwhite;
+	margin-left:22px;
+}
+
+  </style>
+  
+    <ion-content  style="background-color: #f2f2f2;">
+	<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+<div class="list card">
+
+
+
+  <div class="item item-image">
+    <img style="width: 50%;padding: 28px;" src="{{imagepath}}{{product.cImage}}" ng-click="zoom()"/>
+  </div>
+  <div style="border: 1px solid #b7b7b7;margin-top: 1px;" class="row">
+	<div class="col">
+		<p style="font-size:14px;color:#616161; font-weight:bold;padding-left: 10px;">{{product.cName}}</p>
+		<p style="font-size:11px;color:#616161; font-weight:bold;padding-left: 10px;">{{product.cShortDescription}}</p>
+		<p style="font-size: 11px;color:#9e9e9e; font-weight:bold;padding-left: 10px;">{{product.cDescription}}</p>
+	</div>
+	<div style="border-left: 1px solid rgb(97, 97, 97);" class="col col-25">
+	    <p style="font-weight: bold; color: rgb(97, 97, 97); padding-right: 10px; text-align: right;" ng-if="todaydate <= product.dtSpecialPriceTo && todaydate >= product.dtSpecialPriceFrom" ><Strike>{{product.Currency}}{{product.fPrice}}</Strike> {{product.Currency}}{{product.nSpecialPrice}}</p>
+	    <p style="font-weight: bold; color: rgb(97, 97, 97); padding-right: 10px; text-align: right;" ng-if="todaydate >= product.dtSpecialPriceTo || todaydate <= product.dtSpecialPriceFromss">{{product.Currency}}{{product.fPrice}}</p>
+	</div>
+		
+		
+  </div>
+    <div style="font-size: 15px; color: rgb(97, 97, 97); font-weight: bold; padding-left: 22px; padding-top: 20px;text-align:center;"  class="" ng-if="allproduct[0].Attribute[0][1].cValue!=''">
+    Size
+	</div>
+	
+	<div class="" style="width:100%;margin-top: 8px;padding-bottom:8px;text-align:center;">
+		<div ng-repeat="child in allproduct" ng-if="child.Attribute[0][1].cValue!=''" style="width: 50px;display: inline-block;" ng-init="changeproduct.size=allproduct[0].nProductId">
+			<input type="radio" ng-model="changeproduct.size" ng-click="changeproduct({{child.nProductId}})" name="size" id="size{{child.nProductId}}"  value="{{child.nProductId}}" />
+				<label for="size{{child.nProductId}}" class="size1" style="">
+				<span style="margin: 7px;">{{child.Attribute[0][1].cValue}}</span>
+			</label>
+	    </div>
+    </div>
+	
+	
+	<div class="" style="font-size: 15px; color: rgb(97, 97, 97); font-weight: bold; padding-left: 22px; padding-top: 20px;text-align:center;">
+	Color
+	</div>
+	
+	<div class="" style="width:100%;margin-top: 8px;padding-bottom: 8px;text-align:center;">
+		<div ng-repeat="child in allproduct" style="width: 50px;display: inline-block;" ng-init="changeproduct.color=allproduct[0].nProductId">
+			<input type="radio" ng-model="changeproduct.color" ng-click="changeproduct({{child.nProductId}})" name="color" id="color{{child.nProductId}}" checked="{{child.nProductId==167 ? 'true' : 'false'}}" value="{{child.nProductId}}" />
+				<label for="color{{child.nProductId}}" class="color1">
+				<img style="width: 40px;height: 70px;" src="{{imagepath}}{{child.cImage}}" />
+				</label>
+		</div>
+	</div>
+
+	<center><div class="row">
+			
+				<div class="col">
+					<span style="display: inline-block;padding: 2px 15px 6px; background-color: rgb(212, 212, 212); border: medium none; font-size: 25px;" ng-click="product.nQuantity>1 ? product.nQuantity=product.nQuantity-1 : ''" >-</span>
+					<p style="display: inline-block; background-color: rgb(212, 212, 212); text-align: center; height: 28px; padding: 6px 20px 0px; width: 55%;">QTY : {{product.nQuantity }}</p>
+					<span style="font-size: 21px; background-color: rgb(212, 212, 212); padding: 0px 15px;" ng-click="product.nQuantity=product.nQuantity+1">+</span>
+				</div>
+			</div></center>
+			
+	<div style="text-align: center;">
+		<button style="background-color:#55acee;font-size: 15px; border-radius: 37px; padding: 0px 20px;" class="button button-positive" ng-click="addtocart()"><span style="padding-right: 7px;"><img style="width:17px;" src="img/checkout.png"/></span>Add to cart</button></a>
+	</div>
+	
+	<div style="display: inline-flex;border-top: 1px solid rgb(195, 195, 195);margin-top: 10px;border-bottom: 1px solid rgb(195,195,195);"class="button-bar">
+	  <a ng-click="addtowishlist()" style="border-right: 1px solid rgb(188, 188, 188);" class="button "><img style="padding-top: 10px;width: 27px;float: left;" src="img/heart.png"/></a>
+	  <a class="button "><img style="padding-top: 10px;width: 27px;" src="img/msg.png"/></a>
+	  <a ng-click="share()" style="border-left: 1px solid rgb(188, 188, 188);" class="button "><img style="padding-top: 10px;width: 27px;float:right;" src="img/share.png"/></a>
+	</div>
+	</div>	
+<!-- Model of filter start -->
+<script id="templates/zoomimage.html" type="text/ng-template" >
+  <ion-modal-view class="zoom-view">  
+    <ion-content style="background-color: rgb(0, 0, 0);" scroll="false">	
+		<button class="button btn-close" ng-click="zoomimage.hide()" style="color:#fff">Close</button>
+			<ion-scroll direction="xy" zooming="true" style="height:94%">
+				<img style="height:400px;width:300px;" src="{{imagepath}}{{zoomurl}}" ng-click="zoom()"/>
+			</ion-scroll>	
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!-- Model of filter end -->
+
+</ion-view>

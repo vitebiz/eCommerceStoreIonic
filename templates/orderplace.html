@@ -1,0 +1,81 @@
+<ion-view title="Orderplace" >
+<style>
+.radio-icon.disable-pointer-events.icon.ion-checkmark {
+    color: rgb(255, 255, 255);
+}
+.item-radio input:checked + .radio-content .item-content {
+    background: #55ACEE;
+    color: #FFF;
+}
+.radio-content {
+    border-bottom: 2px solid #55ACEE;
+}
+.placeorder-btn{
+	background-color: #55ACEE;
+	border: none;
+	padding: 10px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 15px;
+}
+</style>
+<ion-content>
+<form ng-submit="placeorder()">
+<div class="row">
+	<div class="col" ng-init="placeorder.choice='pickup'">
+		<ion-radio ng-model="placeorder.choice" value="pickup">Pick up</ion-radio>
+	</div>
+	<div class="col">
+		<ion-radio ng-model="placeorder.choice" value="delivery">Delivery</ion-radio>
+	</div>
+</div>
+<div class="" ng-show="placeorder.choice=='pickup'">
+	
+	<div class="col" ng-repeat="store in storelist" ng-init="placeorder.store=storelist[0].strStoreName + storelist[0].strStoreLocation">
+		<label style="" ng-model="placeorder.store" value="" class="item item-radio" style="width: 100%;">
+			<input style="" class="" ng-model="placeorder.store" value="{{store.intStoreId}}" name="store" type="radio">
+			<div class="radio-content">
+				<div class="" style="min-height: 52px;">
+					<span>{{store.strStoreName}}</span>
+					<p style="white-space: normal;">{{store.strStoreLocation}}</p>
+				</div>
+				<i class="radio-icon icon ion-checkmark"></i>
+			</div>
+		</label>
+	</div>	
+
+</div>
+<div class="" ng-show="placeorder.choice=='delivery'">
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Address</p>
+		
+			<input type="text" ng-model="placeorder.cCustomerAddress" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">City</p>
+		
+			<input type="text" ng-model="placeorder.cCity" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Zipcode</p>
+		
+			<input type="text" ng-model="placeorder.cZipCode" value=""></input>
+		  </div>
+		</div>
+</div>
+<div style="text-align:center;margin-top: 20px;">
+	<button type="submit" class="placeorder-btn">Proceed</button>
+</div>
+</form>
+<div style="height:50px"></div>
+</ion-content>
+
+</ion-view>

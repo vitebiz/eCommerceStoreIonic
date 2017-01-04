@@ -1,0 +1,70 @@
+<ion-view title="Search result">
+
+    <ion-nav-buttons side="left">
+
+    </ion-nav-buttons>
+
+    <style>
+        .border-list {
+            background-color: #fff;
+            padding: 10px;
+            margin-top: 9px;
+        }
+
+        .border-list img {
+            width: 100%;
+            height: 190px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .wishlist {
+            width: 20px !important;
+            height: 20px !important;
+
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+
+    <ion-content style="background-color:#EFEFEF;">
+
+        <div class=""
+             style="width: 50%;display: inline-block;padding-left: 5px;padding-right: 5px;padding:0px;margin-top: -8px;padding-top: 0;"
+             ng-repeat="product in productlist" ng-if="productlist[0].Success!=0">
+
+            <div class="col" style="">
+                <div class="border-list">
+                    <img class="wishlist" src="img/heart1.png"/>
+                    <a href='#/productdetail/{{product.nProductId}}/{{product.cName}}'
+                       href=""><img src="{{imagepath}}{{product.cImage}}"/>
+                        <p style="text-align:center;">{{product.cName | limitTo:15}}</p>
+
+
+                        <p class="price"
+                           ng-if="todaydate <= product.dtSpecialPriceTo && todaydate >= product.dtSpecialPriceFrom">
+                            <Strike>{{product.Currency}} {{product.fPrice}}</strike> {{product.Currency}}
+                            {{product.nSpecialPrice}}</p>
+                        <p class="price"
+                           ng-if="todaydate >= product.dtSpecialPriceTo || todaydate <= product.dtSpecialPriceFromss">
+                            {{product.Currency}} {{product.fPrice}}</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="" ng-if="productlist[0].Success==0" style="text-align:center;width: 100%;">
+
+            <h2>{{productlist[0].Message}}</h2>
+        </div>
+        <div style="height:45px;" class=""></div>
+    </ion-content>
+
+</ion-view>

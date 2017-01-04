@@ -1,0 +1,116 @@
+ <ion-view title="Register" >
+
+ <!--  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+  </ion-nav-buttons> -->
+  <ion-nav-back-button class="button-clear" style="color: #FFFFFF;">
+        <i class="icon ion-ios7-arrow-back"></i>
+</ion-nav-back-button>
+  
+ <ion-nav-buttons side="right">   
+ <!--    <button class="button button-icon1 button-icon icon ion-ios-cart" style="color: #FFFFFF;">{{count}}</button> -->
+	
+  </ion-nav-buttons>  
+  <style>
+  .register_bg {
+  background: url(img/login.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  }
+  .item .item-content.activated{
+	background-color: #5E87B0;
+	color: #FFF;
+	} 
+	.form{
+  float:left;
+  height:86%;
+  width:100%;
+  box-sizing:border-box;
+  padding: 20px;
+  
+}
+
+input::-webkit-input-placeholder {
+color:white !important;
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: white !important; 
+font-size:18px; 
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color:white !important;  
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+ 
+input:-ms-input-placeholder {  
+color:white !important;  
+font-size:18px;
+font-family:"-apple-system", "Helvetica Neue", "robotoregular", "Segoe UI", sans-serif;
+}
+input{  
+color:white !important;  
+font-size:20px;
+}
+
+  </style>
+
+  <ion-content class="register_bg">
+	<div style="height:10px;" class=""></div>
+	<div class="" style="width:100%;margin: 0 auto;text-align: center;">
+		  
+				
+				<center><img style="width:210px;" src="{{imagepath}}{{cLogo}}"/></center>
+	</div>
+	
+	<!--<div style="height:100px;" class=""></div>-->
+	<div style="width: 90%;margin: 0 auto;" class="login-form">
+
+		<div style="border-bottom: 1px solid #FFF;" class="login-form">
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-person"></i>
+			<input type="text" ng-model="register.firstname" style="padding-left: 5px;" placeholder="FIRST NAME*"  >
+		  </label></br>
+		  
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-person"></i>
+			<input type="text" ng-model="register.lastname" style="padding-left: 5px;" placeholder="LAST NAME*"  >
+		  </label></br>
+		 
+		 <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-email"></i>
+			<input type="email" ng-model="register.email" style="padding-left: 5px;" placeholder="EMAIL*"  >
+		  </label></br>
+		  
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-iphone"></i>
+			<input type="text" ng-model="register.mobile" style="padding-left: 5px;" placeholder="MOBILE NO.*"  >
+		  </label></br>
+		  
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-locked"></i>
+			<input type="password" ng-model="register.password" style="padding-left: 5px;" placeholder="PASSWORD*">
+		  </label></br>
+		  
+		  <label style="background-color: rgba(255, 255, 255, 0);border-bottom: 1px solid white;padding: 14px" class="item item-input">
+			<i style="font-size:20px;color:#b4b7c0;" class="ion-locked"></i>
+			<input type="password" ng-model="register.cpassword" style="padding-left: 5px;" placeholder="CONFIRMED PASSWORD*">
+		  </label>
+
+	    </div>
+	</div>
+		<div style="text-align: center;margin-top: 10px;">
+		<button ng-click="doSignup()" style="font-size: 20px;font-weight: bold; margin-top: 20px;width:90%;background-color:#23cdde;border-color: #23cdde;color: #fff;" class="button button-positive">
+        Sign Up
+       </button>
+	   </div>
+	   
+    </ion-content>
+</ion-view>

@@ -1,0 +1,246 @@
+<ion-view title="Edit Information">
+
+<ion-nav-buttons side="left">
+        
+      </ion-nav-buttons>
+<ion-nav-back-button class="button-clear" style="color: #FFFFFF;">
+        <i class="icon ion-ios7-arrow-back"></i>
+    </ion-nav-back-button>
+  <!-- <ion-nav-buttons side="left">
+    
+  </ion-nav-buttons> -->
+  
+   <ion-nav-buttons side="right">
+       <img ng-click="editprofile.show()"  style="width: 22px; height: 22px; margin-right: 6px; margin-top: 7px;" src="img/edit.png"></img>
+      </ion-nav-buttons>
+<style>
+
+
+</style> 
+<ion-content>
+
+  
+<!--
+	Edited By hiren
+	UI Changes
+	Date: 2016-08-1
+-->
+<div class="row">
+	<div class="col">
+			<img style="border-radius: 100%; background-color: rgb(232, 232, 232); width:40px;height:40px;box-shadow: 0px 0px 3px #FFFFFF;" src="img/avtar.png">
+			<span style="color: rgb(85,172,238); font-size: 14px; position: absolute; top: 20px; margin-left: 10px;">{{updateprofile.cCustomerFirstName}} {{updateprofile.cCustomerLastName}}</span></img>
+	</div>
+	
+</div>
+
+<div style="width: 96%; margin: 7px auto 0px;" class="">
+	
+	
+
+	
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+	  <div style="" class="col label-font">
+	  
+		<p style="font-size: 11px; color: rgb(135, 135, 135);">Email</p>
+		<p>{{updateprofile.cCustomerEmailId}}</p>
+	  </div>
+	</div>
+	
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+	  <div style="" class="col label-font">
+	  
+		<p style="font-size: 11px; color: rgb(135, 135, 135);">Mobile</p>
+		<p>{{updateprofile.cCustomerContactNo}}</p>
+	  </div>
+	</div>
+	<div style="" class="row border-text">
+	  <div style="" class="col label-font" ng-click="changepassword.show()">
+		<p style="margin-top:10px;color: rgb(5, 70, 183);">Change Password?</p>
+	  </div>
+	</div>
+
+</div>
+	
+<div class="greystrip">
+	<p>Account</p>
+</div>
+
+<div style="padding: 10px 0px;" class="address">
+	<img style="width: 17px; margin-left: 10px;" src="img/location.png"><span style="position:absolute;padding-left: 5px;">{{updateaddress.cCustomerAddress}} {{updateaddress.cCity}} {{updateaddress.cZipCode}}</span></img>
+	
+</div>
+<div style="padding: 10px 0px;" class="address" ng-click="addaddress.show()">
+	<img style="width: 17px; margin-left: 10px;" src="img/plus.png"><span style="color: rgb(5, 70, 183);position:absolute;padding-left: 5px;">Change Address</span></img>
+</div>
+
+ 
+ <div style="height:45px;"></div> 
+  
+  </ion-content>
+  
+  <!-- Model of edit profile start -->
+  <script id="templates/editprofile.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar style="background: #55ACEE;border-bottom: #55ACEE;color:#fff">
+      <h1 class="title" style="color:#fff">Edit Profile</h1>
+	  <button class="button button-clear button-primary" ng-click="editprofile.hide()" style="color:#fff">Cancel</button>
+    </ion-header-bar>
+    <ion-content>
+	<div class="row">
+		<div class="col">
+				<img style="border-radius: 100%; background-color: rgb(232, 232, 232); width:40px;height:40px;box-shadow: 0px 0px 3px #FFFFFF;" src="img/avtar.png">
+				
+		</div>
+		
+	</div>
+<form ng-submit="updateprofile()">
+	<div style="width: 96%; margin: 7px auto 0px;" class="">
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Firstname</p>
+		
+			<input type="text" ng-model="updateprofile.cCustomerFirstName" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Lastname</p>
+		
+			<input type="text" ng-model="updateprofile.cCustomerLastName" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Email</p>
+		
+			<input type="email" ng-model="updateprofile.cCustomerEmailId" value=""></input>
+		  </div>
+		</div>
+		
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Mobile</p>
+			<input type="text" onclick="this.type='number'" ng-model="updateprofile.cCustomerContactNo" value=""></input>
+		  </div>
+		</div>
+
+
+	</div>
+		
+		<center><button class="signout" type="submit">Update</button></center>
+	</form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!-- Model of edit profile end -->
+
+<!-- Model of change password start -->
+  <script id="templates/changepassword.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar style="background: #55ACEE;border-bottom: #55ACEE;color:#fff">
+      <h1 class="title" style="color:#fff">Change Password</h1>
+	  <button class="button button-clear button-primary" ng-click="changepassword.hide()" style="color:#fff">Cancel</button>
+    </ion-header-bar>
+    <ion-content>
+	<form ng-submit="updatepassword()">
+      <div class="modelpass">
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+	  <div style="" class="col label-font">
+	  
+		<p style="font-size: 11px; color: rgb(135, 135, 135);">old password</p>
+	
+		<input type="password" ng-model="updatepassword.oldpassword" value=""></input>
+	  </div>
+	</div>
+	
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+	  <div style="" class="col label-font">
+	  
+		<p style="font-size: 11px; color: rgb(135, 135, 135);">new password</p>
+	
+		<input type="password" ng-model="updatepassword.newpassword" value=""></input>
+	  </div>
+	</div>
+	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+	  <div style="" class="col label-font">
+	  
+		<p style="font-size: 11px; color: rgb(135, 135, 135);">Confirm password</p>
+	
+		<input type="password" ng-model="updatepassword.confpassword" value=""></input>
+	  </div>
+	</div>
+	
+	<center><button class="signout" type="submit">Update</button></center>
+</div>
+</form>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!-- Model of change password end -->
+
+<!-- Model of add adress start -->
+  <script id="templates/addaddress.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar style="background: #55ACEE;border-bottom: #55ACEE;color:#fff">
+      <h1 class="title" style="color:#fff">Change Address</h1>
+	  <button class="button button-clear button-primary" ng-click="addaddress.hide()" style="color:#fff">Cancel</button>
+    </ion-header-bar>
+    <ion-content>
+<form ng-submit="updateaddress()">
+	<div class="modelpass">
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Address</p>
+		
+			<input type="text" ng-model="updateaddress.cCustomerAddress" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">City</p>
+		
+			<input type="text" ng-model="updateaddress.cCity" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">Zipcode</p>
+		
+			<input type="text" ng-model="updateaddress.cZipCode" value=""></input>
+		  </div>
+		</div>
+	<!-- 	<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">city/Town</p>
+		
+			<input type="text" value=""></input>
+		  </div>
+		</div>
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="row border-text">
+		  <div style="" class="col label-font">
+		  
+			<p style="font-size: 11px; color: rgb(135, 135, 135);">State</p>
+		
+			<input type="text" value=""></input>
+		  </div>
+		</div> -->
+		
+		<center><button type="submit" class="signout" >Update</button></center>
+	</div>
+</form>	
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!-- Model of add adress end -->
+
+</ion-view>
+
+

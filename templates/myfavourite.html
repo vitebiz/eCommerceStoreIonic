@@ -1,0 +1,79 @@
+<ion-view title="My Favorite"  >
+
+  <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+      </ion-nav-buttons>
+  <ion-nav-back-button class="button-clear" style="color: #FFFFFF;">
+        <i class="icon ion-ios7-arrow-back"></i>
+      </ion-nav-back-button>
+  <style>
+.border-list{
+	background-color: #fff;
+	padding: 10px;
+	margin-top: 5px;
+}
+.border-list img{
+	width:100%;
+	height: 190px;
+}
+
+a{
+	text-decoration:none;
+	color:#000;
+}
+.wishlist {
+    width: 20px !important;
+    height: 20px !important;
+    float:right;
+}
+strike {
+    color: grey;
+    padding-right: 5px;
+}
+.price{
+	color: #55ACEE;
+	text-align:center;
+}
+p {
+    margin: 0;
+}
+  </style>
+  
+    <ion-content  style="background-color:#EFEFEF;">
+	<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+<div  class="" ng-repeat="product in productlist" ng-if="productlist[0].Success!=0" style="width: 50%;display: inline-block;padding-left: 5px;padding-right: 5px;padding:5px;">
+	
+	<div class="" >
+		<div class="list card" style="margin: 0px 0px !important;">
+			<img class="wishlist" ng-click="rmovefromwishlist({{product.nProductId}})" src="img/delete.png"/>
+			
+			<a ng-click='gotonext({{product.nProductId}},"{{product.cName}}");' href="#/productdetail/{{product.nProductId}}/{{product.cName}}">
+			
+			<center><img src="{{imagepath}}{{product.cImage}}" style="height:98.15px;width:68px;"/></center>
+	<div style="min-height: 55px;" class="row">
+				<div class="col-65">
+			<p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 11px;">{{product.cName | limitTo:15}}</p>
+</div>
+			<div class="col col-31">
+			<p style="text-align:right;font-weight: bold; color: rgb(95, 95, 95); font-size: 11px;" class="price" ng-if="todaydate <= product.dtSpecialPriceTo && todaydate >= product.dtSpecialPriceFrom"><Strike>{{product.Currency}} {{product.fPrice}}</strike> {{product.Currency}} {{product.nSpecialPrice}}</p>
+			<p style="text-align:right;font-weight: bold; color: rgb(95, 95, 95); font-size: 11px;" class="price" ng-if="todaydate >= product.dtSpecialPriceTo || todaydate <= product.dtSpecialPriceFromss">{{product.Currency}} {{product.fPrice}}</p>
+			</div> 
+			</div>
+			<a href="#/productdetail/{{product.nProductId}}/{{product.cName}}" style="min-height: 25px;line-height: 25px;border-color: #55acee;width:100%;padding: 0px 7px;font-size: 12px;background-color: #55acee;color: #fff;border-radius: 0px;" class="button icon-right ion-chevron-right button-calm viewmore">Buy now</a>
+			</a>
+		</div>
+	</div>
+	
+</div>
+
+
+
+
+<div class="" ng-if="productlist[0].Success==0" style="text-align:center;width: 100%;">
+
+	<h2>{{productlist[0].Message}}</h2>
+</div>
+<div style="height:45px;" class=""></div>
+    </ion-content>
+ 
+</ion-view>

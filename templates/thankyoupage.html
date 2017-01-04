@@ -1,0 +1,36 @@
+<ion-view title="" hide-back-button="true">
+<style>
+.radio-icon.disable-pointer-events.icon.ion-checkmark {
+    color: rgb(255, 255, 255);
+}
+.item-radio input:checked + .radio-content .item-content {
+    background: #55ACEE;
+    color: #FFF;
+}
+.radio-content {
+    border-bottom: 2px solid #55ACEE;
+}
+.placeorder-btn{
+	background-color: #55ACEE;
+	border: none;
+	padding: 10px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 15px;
+}
+</style>
+<ion-content>
+
+
+<div class="" style="text-align: center;margin-top: 20px;">
+<h1> Thank You ...</h1>
+<p>Yor order #{{nOrderId}} has successfully placed</p>
+</div>
+
+<div style="text-align:center;margin-top: 20px;">
+	<a onclick='' href="#/app/home"><button type="submit" class="placeorder-btn">Continue...</button></a>
+</div>
+
+</ion-content>
+
+</ion-view>

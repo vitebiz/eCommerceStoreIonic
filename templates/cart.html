@@ -1,0 +1,143 @@
+<ion-view title="Cart" hide-back-button="true">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon" style="color: #FFFFFF;"></button>
+  </ion-nav-buttons>
+  
+  <ion-nav-buttons side="right">   
+   
+	
+	
+		
+  </ion-nav-buttons>
+  <ion-nav-back-button class="button-clear" style="color: #FFFFFF;">
+        <i class="icon ion-ios7-arrow-back"></i>
+      </ion-nav-back-button>
+  <style>
+
+.catagory_img{
+	width: 40% !important;
+}
+
+.btn{
+	position: absolute;
+	bottom: 0px;
+	width:100%;
+}
+.address-btn{
+	width: 100%;
+	background-color: #55ACEE;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	border: none;
+}
+.total{
+	color: rgb(86, 86, 86);
+	text-align: center;
+	font-weight: bold;
+}
+.promocode{
+	border-top: 1px solid rgb(152, 152, 152);
+	color: rgb(117, 117, 117);
+}
+.label-total{
+	text-align: left;
+}
+
+  </style>
+
+<ion-content style="background-color:#f1f5f7">
+	
+<div class="" style="width: 50%;display: inline-block;padding-left: 5px;padding-right: 5px;padding:5px;" ng-repeat="product in cartlist track by $index" ng-if="cartlist[0].Success!=0">
+	<div class="" >
+		<div style="margin: 0px 0px !important;" class="list card">
+				<div style="border-bottom: 1px solid rgb(201, 201, 201);z-index: 999;" class="item item-image">
+					<a href="#/app/productdetail"><img class="catagory_img" src="{{imagepath}}{{product.cImage}}"></a>
+				</div>
+				
+			<div class="row">
+				<div style="border-right: 1px solid rgb(182, 182, 182);padding-right: 5px;" class="col-75">
+					<p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 12px;" class="">{{product.cName | limitTo :20}}</p>
+					<p style="padding-top: 5px;font-weight: bold; color: rgb(158,158,158); font-size: 12px;" class="">{{product.cShortDescription | limitTo :20}}</p>
+					<p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 12px; text-align:left;" class="price" ng-if="todaydate <= product.dtSpecialPriceTo && todaydate >= product.dtSpecialPriceFrom" ><Strike>{{product.Currency}} {{product.fPrice * product.nQuantity}}</strike> {{product.Currency}} {{product.nSpecialPrice * product.nQuantity}}</p>
+					<p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size: 12px; text-align:left;" class="price" ng-if="todaydate >= product.dtSpecialPriceTo || todaydate <= product.dtSpecialPriceFromss">{{product.Currency}} {{product.fPrice * product.nQuantity}}</p>
+				
+				    <span style="display: inline-block;padding: 0px 9px 7px; background-color: rgb(212, 212, 212); border: medium none; font-size: 23px;" ng-click="incqty({{product.nCartId}},product.nProductId,product.nQuantity-1);product.nQuantity>1 ? product.nQuantity=product.nQuantity-1 : ''" >-</span>
+					<p style="display: inline-block; background-color: rgb(212, 212, 212); text-align: center; height: 28px; padding: 5px 0px 0px; width: 39%;font-size: 11px;">QTY : {{product.nQuantity}}</p>
+					<span style="font-size: 15px; background-color: rgb(212, 212, 212); padding: 3px 10px 6px;" ng-click="incqty({{product.nCartId}},product.nProductId,product.nQuantity+1);product.nQuantity=product.nQuantity+1">+</span>
+				</div>
+				
+				<div class="col">
+					<img ng-click="deletefromcart(product.nCartId)" style="float:right;" src="img/delete.png"/>
+				</div> 
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+
+<div class="promocode" ng-if="cartlist[0].Success!=0">
+	<div class="row" ng-hide="promolink" ng-click="promoapply.promocode=true" >
+		<div class="col">Have a promocode?</div>
+	</div>
+	<div class="row" ng-show="promoapply.promocode">
+		<div class="col">
+		<div style="border-bottom: 1px solid rgb(216, 216, 216);" class="border-text">
+		  <div style="" class="col label-font">
+			<input style="color:#000;" type="text" ng-model="promoapply.promo" value=""></input>
+		  </div>
+		</div>
+		</div>
+		<div class="col">
+			<button class="address-btn" ng-click="promoapply()" style="background-color: #D4D4D4;color: #000;">Apply</button>
+		</div>
+	</div>
+	<div class="row" ng-show="promocodeerror" style="color: rgb(255, 0, 0);">
+		<div class="col">
+		{{message}}
+		</div>
+	</div>
+	<div class="row" ng-show="promocodesuccess" style="background-color: rgb(0, 0, 0);color: rgb(255, 255, 255);padding-top: 5px;">
+		<div class="col">
+		Your promocode {{promocode}} has been applied
+		</div>
+		<div class="col col-10" ng-click="removepromo()">
+		X
+		</div>
+	</div>
+</div>
+
+<div ng-if="cartlist[0].Success!=0" style="border-bottom: 1px solid rgb(189, 189, 189);" class="row">
+	<div class="col">
+	     <p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;">Subtotal :</p>
+		 <p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;">Discount :</p>
+		 <p style="padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;">Total :</p>
+	</div>
+	
+	<div class="col">
+		<p style="text-align:right;padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;"> {{cartlist[0].Currency}} {{total}} </p>
+		<p style="text-align:right;padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;"> {{cartlist[0].Currency}} {{discount}} </p>
+		<p style="text-align:right;padding-top: 5px;font-weight: bold; color: rgb(95, 95, 95); font-size:16px;"> {{cartlist[0].Currency}} {{grandtotal}} </p>
+	</div>
+</div>
+
+<div  ng-if="cartlist[0].Success==0" >
+	<h2 style="text-align:center;margin-top:20px;">{{cartlist[0].Message}}</h2>
+</div>
+
+<a style="text-decoration:none;" href="#/app/orderplace"><div style="width:50%;margin: 0 auto;" ng-if="cartlist[0].Success!=0">
+     <button style="border-color:#55acee;color:#fff;background-color:#55acee;border-radius: 35px;" class="button button-block button-light">Order Now</button>
+</div></a> 
+
+
+
+
+
+	
+	
+    </ion-content>
+	
+</ion-view>
