@@ -1,0 +1,79 @@
+  
+  <style>
+  .scroll-content {
+    background: url(img/loginbg.png) no-repeat center center fixed;
+	-webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  }
+  
+  .item .item-content.activated{
+	background-color: #5E87B0;
+	color: #FFF;
+	} 
+	.form{
+  float:left;
+  height:86%;
+  width:100%;
+  box-sizing:border-box;
+  padding: 20px;
+}
+::-webkit-input-placeholder {
+    color: #363636 !important;
+	font-weight: bold;
+	font-size: 12px;
+}
+:-moz-placeholder {
+    color: #363636 !important;
+	font-weight: bold;
+	font-size: 12px;
+}
+::-moz-placeholder {
+    color: #363636 !important;
+	font-weight: bold;
+	font-size: 12px;
+}
+:-ms-input-placeholder {
+    color: #363636 !important;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+  </style>
+  <ion-content>
+	  
+    
+		<div style="width:70%;margin:0 auto;" class="list">  
+			<img style="padding-top: 40px; width:75px;" src="img/logo.png"></img>		
+		  
+		</div>
+<div style="width:70%;margin:0 auto;" class="list">
+    <label style="border-bottom: 1px solid rgb(70, 159, 226);" class="item item-input item-floating-label">
+    <span style="font-size: 13px;" class="input-label">Username</span>
+    <input type="text" ng-model="login.cUserName" placeholder="Username or Email" class="ion-person">
+  </label>
+  <label style="border-bottom: 1px solid rgb(70, 159, 226);" class="item item-input item-floating-label">
+    <span style="font-size: 13px;" class="input-label">Password</span>
+    <input type="text" ng-model="login.cPassword" placeholder="Password">
+  </label>
+
+
+</div>
+
+<div style="text-align: center;margin-top: 20px;">
+<button ng-click="loginUser()" style="width: 70%; background-color: rgb(255, 255, 255); border-color: rgb(255, 255, 255); color: rgb(70, 159, 226); border-radius: 42px; box-shadow: 0px 1px 0px rgb(104, 97, 97);" class="button button-positive">
+  Sign in
+</button></a>
+
+</div>
+
+
+
+  </ion-content>
+ <div style="border-color: rgba(178, 178, 178, 0);background-color: RGBA(255, 255, 255, 0);" class="tabs">
+	<p style="font-size:13px;color: rgb(95, 95, 95);text-align:center;">Don't have an account?<a style="text-decoration:none;"href="#/register"><span style="color: rgb(70, 159, 226);;"> Sign up</span></a>
+ 
+ </br><br/>	<a style="text-decoration:none;"href="#/ForgotPassword"><p style="font-size:13px;color: rgb(95, 95, 95);text-align:center;">ForgotPassword</p></a>
+ </div>
+</ion-view>
