@@ -5,7 +5,7 @@ For Webservices please refer this link
 
 <h2>eCommerce app powered by Vitebiz</h2>
 
-<img src="https://s3.amazonaws.com/ionic-marketplace/ecommerce-ionic-complete-store-with-powerful-free-vite-biz-backend/screenshot_6.png" height="550px" width="600px"/>
+<a href="http://www.vitebiz.com/storeadmin/Login.aspx"><img src="https://s3.amazonaws.com/ionic-marketplace/ecommerce-ionic-complete-store-with-powerful-free-vite-biz-backend/screenshot_6.png" height="550px" width="700px"/></a>
 
 ViteCommerce is a starter project to create eCommerce Store Mobile app in Ionic!
 This project is the product of many years of iterative development and combined community knowledge from secure asp.net based backend projects.
