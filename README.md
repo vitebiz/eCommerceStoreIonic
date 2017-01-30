@@ -53,3 +53,12 @@ And many more features
 <br>
 <h3>For Webservices please refer this link</h3>
 Web Services Documentation <b> http://www.vitebiz.com/documents/ecommerceapp/ </b>
+
+<h3> <a href="http://www.icaninfotech.com" target="_blank">Hire Developer </a> for your Custom needs</h3> 
+
+<h4>or <a href="mailto:mandipkanjiya@gmail.com"> send Email to Mandip </a> </h4>
+
+
+
+
+
